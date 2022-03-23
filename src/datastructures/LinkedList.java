@@ -1,15 +1,15 @@
 package datastructures;
 
-public class LinkedList {
-	Node head;
-	Node tail;
+public class LinkedList<T> {
+	Node<T> head;
+	Node<T> tail;
 
 	public LinkedList() {
 		this.head = null;
 		this.tail = null;
 	}
 
-	public void add(Node node) {
+	public void add(Node<T> node) {
 		if (head == null) {
 			head = node;
 			tail = node;
@@ -19,8 +19,23 @@ public class LinkedList {
 		}
 	}
 
-	public void append(Node node) {
+	public void add(Node<T> node, T key) {
+		Node<T> temp = head;
+		while (temp != null && !temp.getData().equals(key)) {
+			temp = temp.getNext();
+		}
+		if (temp == null) {
+			System.err.println("Cannot find " + key);
+			return;
+		}
+		if (tail.equals(temp)) {
+			tail = node;
+		}
+		node.setNext(temp.getNext());
+		temp.setNext(node);
+	}
 
+	public void append(Node<T> node) {
 		if (head == null) {
 			head = node;
 			tail = node;
@@ -31,11 +46,11 @@ public class LinkedList {
 	}
 
 	public void printList() {
-		Node temp = head;
+		Node<T> temp = head;
 		while (temp != null) {
-			System.out.print(temp.getData() + " ");
+			System.out.print(temp.getData().toString() + " ");
 			temp = temp.getNext();
 		}
+		System.out.println();
 	}
-
 }

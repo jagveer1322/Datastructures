@@ -9,7 +9,7 @@ public class DataStructuresMain {
 		System.out.println("Before Deletion");
 		linkedList.printList();
 		System.out.println("=============================================\nAfter Deletion---->");
-		linkedList.pop();
+		linkedList.popLast();
 		linkedList.printList();
 	}
 }

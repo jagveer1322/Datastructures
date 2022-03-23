@@ -45,6 +45,17 @@ public class LinkedList<T> {
 		}
 	}
 
+	public Node<T> search(T key) {
+		Node<T> temp = head;
+		while (temp != null && !temp.getData().equals(key)) {
+			temp = temp.getNext();
+		}
+		if (temp == null) {
+			System.err.println("Cannot find " + key);
+		}
+		return temp;
+	}
+
 	public void printList() {
 		Node<T> temp = head;
 		while (temp != null) {
@@ -67,6 +78,7 @@ public class LinkedList<T> {
 
 	public void popLast() {
 		if (head == null) {
+			System.out.println("list is empty");
 		} else if (head == tail) {
 			head = tail = null;
 		} else {

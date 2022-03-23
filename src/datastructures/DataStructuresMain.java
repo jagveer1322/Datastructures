@@ -6,10 +6,10 @@ public class DataStructuresMain {
 		linkedList.append(new Node(56));
 		linkedList.append(new Node(30));
 		linkedList.append(new Node(70));
-		System.out.println("Before Deletion");
-		linkedList.printList();
-		System.out.println("=============================================\nAfter Deletion---->");
-		linkedList.popLast();
-		linkedList.printList();
+
+		Node result = linkedList.search(30);
+		if (result != null) {
+			System.out.println("Key Found");
+		}
 	}
 }

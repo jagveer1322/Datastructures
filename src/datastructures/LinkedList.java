@@ -90,4 +90,34 @@ public class LinkedList<T> {
 			temp.setNext(null);
 		}
 	}
+
+	public void deleteNode(T key) {
+		Node<T> keyNode = search(key);
+		if (keyNode == null) {
+			return;
+		}
+		if (head == keyNode) {
+			head = null;
+			tail = null;
+		} else {
+			Node<T> temp = head;
+			while (temp.getNext() != keyNode) {
+				temp = temp.getNext();
+			}
+			temp.setNext(keyNode.getNext());
+			if (keyNode == tail) {
+				tail = temp;
+			}
+		}
+	}
+
+	public int size() {
+		int length = 0;
+		Node temp = head;
+		while (temp != null) {
+			temp = temp.getNext();
+			length++;
+		}
+		return length;
+	}
 }

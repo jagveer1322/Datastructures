@@ -5,12 +5,12 @@ public class DataStructuresMain {
 		LinkedList<Integer> linkedList = new LinkedList<Integer>();
 		linkedList.append(new Node(56));
 		linkedList.append(new Node(30));
+		linkedList.append(new Node(40));
 		linkedList.append(new Node(70));
-		System.out.println(" Before Insertion --->");
-		linkedList.printList();
-		System.out.println("=============================================\n  After Insertion---->");
-		linkedList.add(new Node(40), 30);
-		linkedList.printList();
-
+		System.out.println("Size of list before deletion--->");
+		System.out.println(linkedList.size());
+		linkedList.deleteNode(40);
+		System.out.println("Size of list after deletion---> ");
+		System.out.println(linkedList.size());
 	}
 }

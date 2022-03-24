@@ -15,4 +15,9 @@ public class Queue<T> {
 		list.printList();
 
 	}
+
+	public void deQueue() {
+		list.pop();
+		list.printList();
+	}
 }

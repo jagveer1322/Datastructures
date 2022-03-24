@@ -7,5 +7,6 @@ public class DataStructuresMain {
 		queue.enQueue(30);
 		queue.enQueue(70);
 		queue.printQueue();
+		queue.deQueue();
 	}
 }

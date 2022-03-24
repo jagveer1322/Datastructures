@@ -1,10 +1,10 @@
 package datastructures;
 
-public class LinkedList<T> {
+public class SortedLinkedList<T extends Comparable<T>> {
 	Node<T> head;
 	Node<T> tail;
 
-	public LinkedList() {
+	public SortedLinkedList() {
 		this.head = null;
 		this.tail = null;
 	}
@@ -13,35 +13,21 @@ public class LinkedList<T> {
 		if (head == null) {
 			head = node;
 			tail = node;
+		} else if (head == tail) {
+			if (head.compareTo(node) > 0) {
+				node.setNext(head);
+				head = node;
+			} else {
+				head.setNext(node);
+				tail = node;
+			}
 		} else {
-			node.setNext(head);
-			head = node;
-		}
-	}
-
-	public void add(Node<T> node, T key) {
-		Node<T> temp = head;
-		while (temp != null && !temp.getData().equals(key)) {
-			temp = temp.getNext();
-		}
-		if (temp == null) {
-			System.err.println("Cannot find " + key);
-			return;
-		}
-		if (tail.equals(temp)) {
-			tail = node;
-		}
-		node.setNext(temp.getNext());
-		temp.setNext(node);
-	}
-
-	public void append(Node<T> node) {
-		if (head == null) {
-			head = node;
-			tail = node;
-		} else {
-			tail.setNext(node);
-			tail = node;
+			Node<T> temp = head;
+			while (temp.getNext() != null && temp.getNext().compareTo(node) < 0) {
+				temp = temp.getNext();
+			}
+			node.setNext(temp.getNext());
+			temp.setNext(node);
 		}
 	}
 
@@ -67,7 +53,6 @@ public class LinkedList<T> {
 
 	public void pop() {
 		if (head == null) {
-			System.out.println("list is empty");
 			return;
 		}
 		head = head.getNext();
@@ -78,7 +63,6 @@ public class LinkedList<T> {
 
 	public void popLast() {
 		if (head == null) {
-			System.out.println("list is empty");
 		} else if (head == tail) {
 			head = tail = null;
 		} else {

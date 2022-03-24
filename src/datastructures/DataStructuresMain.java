@@ -7,5 +7,9 @@ public class DataStructuresMain {
 		stack.push(30);
 		stack.push(56);
 		stack.printStack();
+		stack.pop();
+		stack.pop();
+
+		stack.printStack();
 	}
 }

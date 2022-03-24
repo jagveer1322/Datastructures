@@ -31,6 +31,10 @@ public class LinkedList<T> {
 		keyNode.setNext(node);
 	}
 
+	public Node<T> getHead() {
+		return head;
+	}
+
 	public Node<T> search(T key) {
 		Node<T> temp = head;
 		while (temp != null && !temp.getData().equals(key)) {

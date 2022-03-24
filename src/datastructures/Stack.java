@@ -14,4 +14,12 @@ public class Stack<T> {
 	public void printStack() {
 		list.printList();
 	}
+
+	public T peek() {
+		return list.getHead().getData();
+	}
+
+	public void pop() {
+		list.pop();
+	}
 }

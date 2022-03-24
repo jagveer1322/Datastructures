@@ -1,10 +1,10 @@
 package datastructures;
 
-public class SortedLinkedList<T extends Comparable<T>> {
+public class LinkedList<T> {
 	Node<T> head;
 	Node<T> tail;
 
-	public SortedLinkedList() {
+	public LinkedList() {
 		this.head = null;
 		this.tail = null;
 	}
@@ -13,22 +13,22 @@ public class SortedLinkedList<T extends Comparable<T>> {
 		if (head == null) {
 			head = node;
 			tail = node;
-		} else if (head == tail) {
-			if (head.compareTo(node) > 0) {
-				node.setNext(head);
-				head = node;
-			} else {
-				head.setNext(node);
-				tail = node;
-			}
 		} else {
-			Node<T> temp = head;
-			while (temp.getNext() != null && temp.getNext().compareTo(node) < 0) {
-				temp = temp.getNext();
-			}
-			node.setNext(temp.getNext());
-			temp.setNext(node);
+			node.setNext(head);
+			head = node;
 		}
+	}
+
+	public void add(Node<T> node, T key) {
+		Node keyNode = search(key);
+		if (keyNode == null) {
+			return;
+		}
+		if (tail.equals(keyNode)) {
+			tail = node;
+		}
+		node.setNext(keyNode.getNext());
+		keyNode.setNext(node);
 	}
 
 	public Node<T> search(T key) {
@@ -40,6 +40,16 @@ public class SortedLinkedList<T extends Comparable<T>> {
 			System.err.println("Cannot find " + key);
 		}
 		return temp;
+	}
+
+	public void append(Node<T> node) {
+		if (head == null) {
+			head = node;
+			tail = node;
+		} else {
+			tail.setNext(node);
+			tail = node;
+		}
 	}
 
 	public void printList() {

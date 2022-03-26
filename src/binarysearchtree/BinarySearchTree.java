@@ -2,6 +2,7 @@ package binarysearchtree;
 
 public class BinarySearchTree {
 	Node root;
+	static boolean flag = false;
 
 	public BinarySearchTree() {
 		root = null;
@@ -44,6 +45,23 @@ public class BinarySearchTree {
 			System.out.print(node.data + " ");
 			if (node.right != null)
 				inorderTraversal(node.right);
+		}
+	}
+
+	public void searchNode(Node node, int value) {
+		if (root == null)
+			System.out.println("Tree is empty");
+		else {
+			if (node.data == value) {
+				flag = true;
+				return;
+			}
+			if (flag == false && node.left != null) {
+				searchNode(node.left, value);
+			}
+			if (flag == false && node.right != null) {
+				searchNode(node.right, value);
+			}
 		}
 	}
 

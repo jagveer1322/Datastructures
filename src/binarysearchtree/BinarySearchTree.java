@@ -37,7 +37,7 @@ public class BinarySearchTree {
 
 	public void inorderTraversal(Node node) {
 		if (root == null)
-			System.out.println("Tree is empty");
+			System.out.println("Empty tree");
 		else {
 			if (node.left != null)
 				inorderTraversal(node.left);
@@ -45,5 +45,12 @@ public class BinarySearchTree {
 			if (node.right != null)
 				inorderTraversal(node.right);
 		}
+	}
+
+	public int size(Node node) {
+		if (node == null)
+			return 0;
+		else
+			return (size(node.left) + 1 + size(node.right));
 	}
 }
